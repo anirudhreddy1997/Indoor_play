@@ -17,11 +17,11 @@ router.post('/', async(req,res) => {
       // console.log('Error 2');
       return res.status(400).send('Already registered user');
   }
-  user = new User({
+ user = new User({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
-  });
+  }); 
   // console.log('No Error');
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password,salt);

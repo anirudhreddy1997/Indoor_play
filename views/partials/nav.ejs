@@ -1,20 +1,4 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-  <title></title>
-  <link rel="stylesheet" href="/stylesheets/layout.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script src="/javascripts/layout.js"> </script>
-  <script src="/javascripts/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/stylesheets/adults.css">
-</head>
-
-<body> -->
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark"><a class="navbar-brand" href="#">Logo</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"><a class="navbar-brand" href="#">Logo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -27,8 +11,8 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a id = "adults" class="dropdown-item" href="#">Adults</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a id = "kids" class="dropdown-item" href="#">Kids</a>
+              <a id = "boardGames"class="dropdown-item" href="#">Board Games</a>
             </div>
           </div>
         </li>
@@ -43,7 +27,7 @@
         <ul class="navbar-nav mr-auto">
           <% if(locals.user){%> 
             <li class="nav-item dropdown">
-              <a class="text-white nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=locals.user.name%></a>
+              <button class="text-white nav-link dropdown-toggle btn btn-primary" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=locals.user.name%></button>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 4px; left: auto;">
                   <a class="dropdown-item" href="/adult">Wishlist</a>
                   <a class="dropdown-item" href="/kids">Cart</a>
@@ -65,13 +49,13 @@
   </nav>
   <div class="modal fade" id="myRegisterModal">
     <div class="modal-dialog">
-      <div class="modal-content"> -->
+      <div class="modal-content">
         <!-- Modal Header-->
-        <!-- <div class="modal-header">
+        <div class="modal-header">
           <button class="close" type="button" data-dismiss="modal">×</button>
-        </div> -->
+        </div>
         <!-- Modal body-->
-        <!-- <div class="modal-body">
+        <div class="modal-body">
           <form class="form-container" method="POST" action="/usersRegistration">
             <div class="form-group">
               <label for="exampleInputName">Name</label>
@@ -93,13 +77,13 @@
   </div>
   <div class="modal fade" id="myLoginModal">
     <div class="modal-dialog">
-      <div class="modal-content"> -->
+      <div class="modal-content">
         <!-- Modal Header-->
-        <!-- <div class="modal-header">
+        <div class="modal-header">
           <button class="close" type="button" data-dismiss="modal">×</button>
-        </div> -->
+        </div>
         <!-- Modal body-->
-        <!-- <div class="modal-body">
+        <div class="modal-body">
           <form class="form-container" method="POST" action="/auth">
             <div class="form-group">
               <label for="exampleInputEmail">Email address</label>
@@ -114,10 +98,4 @@
         </div>
       </div>
     </div>
-  </div> -->
-  <!-- <div id = "gameContainer"> -->
-  <!-- <%- body %> -->
-<!-- </div> -->
-<!-- </body>
-
-</html> -->
+  </div>

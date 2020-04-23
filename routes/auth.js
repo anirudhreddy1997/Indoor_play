@@ -23,6 +23,7 @@ router.post('/', async(req,res) => {
 
     // Send the JSW token
     const token = user.generateAuthToken();
+    console.log(req);
     res.cookie('indplay-jwt-token', token, {httpOnly: true, maxAge: 1000000}).redirect('/');
 })
 function validateAuth(user){

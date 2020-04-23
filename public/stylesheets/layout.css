@@ -7,21 +7,7 @@
   margin-bottom:10px;
   opacity: 0.8;
 } 
-/* GLOBAL STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
 
-/* body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  color: #5a5a5a;
-} */
-
-
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
 }
@@ -44,11 +30,6 @@
   height: 32rem;
 }
 
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
@@ -62,19 +43,25 @@
 }
 
 
-/* Featurettes
-------------------------- */
-
 .featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  margin: 5rem 0; 
 }
 
-/* Thin out the marketing headings */
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -.05rem;
 }
+
+.card-deck{
+  padding-top: 100px;
+}
+
+.card{
+  border-color: black;
+}
+
+
 
 
 /* RESPONSIVE CSS
