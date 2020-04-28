@@ -1,12 +1,112 @@
-<div class="card-deck" style="padding-left: 10px; padding-right: 10px;">
-    <% for( let game of games) { %>
-        <div class="card">
-            <a href = "#"><img class="card-img-top" src="/images/<%= game.name %>.jpg" alt="Card image cap"></a>
-            <div class="card-body">
-              <a href = "#" style="text-decoration: none;"><h5 class="card-title text-dark"><%= game.name %></h5></a>
-              <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-              <button class = "btn btn-primary" style="display: block; margin: 0 auto;">CHECK AVAILABILITY</button>
+<!-- User is an admin, UI to create a new game -->
+<% if(locals.isAdmin){%>
+  <div class="d-flex flex-row-center">
+    <div class="p-2">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#myCreateModal">+ Create</button> 
+    </div>
+  </div>
+  <div class="modal fade" id="myCreateModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <form class="form-container" method="POST" enctype="multipart/form-data" action="/createGame">
+            <div class="form-group">
+              <label for="exampleInputName">Game Name</label>
+              <input class="form-control"  name="name" type="text" placeholder="Enter game name">
             </div>
+            <div class="form-group">
+              <label for="exampleInputEmail">Type</label>
+              <input class="form-control"  name="type" type="text" placeholder="Enter type">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword">Description</label>
+              <input class="form-control"  name="description" type="text" placeholder="Description">
+            </div>
+            <div class="form-group">
+              <p>Upload an image</p><input type="file" name="gameImage" />
+            </div>
+
+            <button class="btn btn-primary RegisterButton" type="submit">CREATE</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }%>
+<!-- Game Cards Container -->
+<div class="container">
+  <div class="row">
+    <!-- Game card -->
+    <% for( let game of games) { %>
+      <div class="col-sm-12 col-md-4">
+        <div class="custom-column">
+          <div>
+            <!-- To have admin control to delete a game  -->
+            <% if(locals.isAdmin){%>
+              <button class = "btn btn-secondary trash" style="bottom: 0px;">
+                <i class="fa fa-trash"></i>
+              </button>
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#myEditModal">
+                <i class='fa fa-edit'></i>
+              </button>
+              <div class="modal fade" id="myEditModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" type="button" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-container" method="POST" enctype="multipart/form-data" action="/editGame/<%=game._id%>">
+                        <div class="form-group">
+                          <label for="exampleInputName">Game Name</label>
+                          <input class="form-control"  value = "<%=game.name%>" name="name" type="text" placeholder="Enter game name">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail">Type</label>
+                          <input class="form-control"  value = "<%=game.type%>" name="type" type="text" placeholder="Enter type">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword">Description</label>
+                          <input class="form-control"  value = "<%=game.description%>" name="description" type="text" placeholder="Description">
+                        </div>
+                        <div class="form-group">
+                          <p>Edit image file</p><input type="file" value = "<%=game.name%>.jpg" name="gameImage" />
+                        </div>
+            
+                        <button class="btn btn-primary RegisterButton" type="submit">SAVE</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <%}%>
+            <!-- Wishlist button -->
+              <button class = "btn btn-outline-danger wishlist" style="right: 10px; position: absolute;">
+                <i class="fa fa-heart-o"></i>
+              </button>
           </div>
+          
+          <div style="padding-top: 30px;">
+            <a href = "#"><img class="image" src="/images/<%= game.name %>.jpg" alt="Card image cap"></a>
+          </div>
+          <div class="custom-column-content">
+            <a href = "#" style="text-decoration: none;">
+              <h5 class= "game-name text-dark">
+                <%= game.name %>
+              </h5>
+            </a>
+          </div>
+            <div class="custom-column-footer">
+              <button class="btn btn-primary btn-lg availability">
+                CHECK AVAILABILITY
+              </button>
+            </div>
+          
+        </div>
+        </div>
     <% } %>
+  </div>
 </div>

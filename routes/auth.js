@@ -27,14 +27,6 @@ router.post('/', async(req,res) => {
     res.cookie('indplay-jwt-token', token, {httpOnly: true, maxAge: 1000000}).redirect('/');
 })
 function validateAuth(user){
-    // const complexityOptions = {
-    //     min: 5,
-    //     max: 255,
-    //     upperCase: 1,
-    //     numeric: 1,
-    //     symbol: 1,
-    //     requirementCount: 4 
-    // };
     const schema = {
         email: Joi.string().min(8).max(255).required().email(),
         password: Joi.string().min(8).max(255).required()

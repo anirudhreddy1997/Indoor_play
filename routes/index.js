@@ -8,7 +8,7 @@ router.get('/', auth,function(req, res, next) {
     res.locals.error = req.error;
   }
   if(req.user){
-    //console.log(req.user);
+    // console.log(req.user);
     res.locals.user = req.user;
   }
   res.locals.title = 'Indoor Playground';
