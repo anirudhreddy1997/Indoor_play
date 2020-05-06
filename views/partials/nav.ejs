@@ -8,7 +8,7 @@
       </ul>
       <div class="flex-grow-1 d-flex">
         <div class="form-inline my-2 my-lg-0 mx-lg-auto">
-          <select name = "filter" id="select-filter" class="custom-select mr-sm-2" >
+          <select name = "filter" id="filter" class="custom-select mr-sm-2" >
             <option selected>Filter</option>
             <option name = "All" value="All">All</option>
             <option name = "Adults" value="Adults">Adults</option>
@@ -26,7 +26,7 @@
               <button class="text-white nav-link dropdown-toggle btn btn-primary" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=locals.user.name%></button>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 4px; left: auto;">
                   <a class="dropdown-item" id = "wishlist-button" href="#">Wishlist</a>
-                  <a class="dropdown-item" href="#">Cart</a>
+                  <a class="dropdown-item" id = "button-bookings" href="#">My Bookings</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/logout">Log Out</a>
                 </div>

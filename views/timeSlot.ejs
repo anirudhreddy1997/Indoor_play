@@ -1,0 +1,55 @@
+<form action = '/timeSlot/<%=id%>/book' method = "POST">
+<% if(booked.indexOf("slot2") == -1){%>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="slot1" checked>
+    <label class="form-check-label" for="exampleRadios1">
+        Slot 1
+    </label>
+    </div>
+<%}else{%>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="slot1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Slot 1
+        </label>
+        </div>
+<%}%>
+<% if(booked.indexOf("slot2") == -1){%>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="slot2">
+        <label class="form-check-label" for="exampleRadios2">
+            Slot 2
+        </label>
+        </div>
+<%}else{%>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="slot2" disabled>
+        <label class="form-check-label" for="exampleRadios2">
+            Slot 2
+        </label>
+    </div>
+<%}%>
+    
+    
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="slot3">
+    <label class="form-check-label" for="exampleRadios3">
+        Slot 3
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="slot4">
+    <label class="form-check-label" for="exampleRadios4">
+        Slot 4
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="slot5">
+    <label class="form-check-label" for="exampleRadios5">
+        Slot 5
+    </label>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+
+  

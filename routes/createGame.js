@@ -16,21 +16,24 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 router.post('/', upload.single('gameImage'), async(req,res) => {
-//   console.log('create game called');
+
   const {error} = validateGame(req.body);
   if(error){
       return res.status(400).send(error.details[0].message);
   }
-  let game = await Game.findOne({ name: req.body.name });
+  let game = await Game.findOne({ name: req.body.name, type: req.body.type, description: req.body.description  });
   if(game){
-      return res.status(400).send('Game already available');
+      await Game.update({ name: req.body.name, type: req.body.type, description: req.body.description }, {show : true});
   }
-game = new Game({
-      name: req.body.name,
-      type: req.body.type,
-      description: req.body.description
-  }); 
-  game = await game.save();
+  else{
+        game = new Game({
+        name: req.body.name,
+        type: req.body.type,
+        description: req.body.description
+    }); 
+    game = await game.save();
+  }
+    
   res.redirect('/');
 })
 

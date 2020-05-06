@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 const {Game, validateGame}  = require('../models/game');
 
 
-router.post('/', async(req,res) => {
+router.get('/:id', async(req,res) => {
   // user is the admin
   res.locals.isAdmin = true;
+  const game_id = req.params.id;
   // find the game to be deleted
-  console.log(req.body.game_name);
-  let game = await Game.findOne({ name: req.body.game_name });
+  // console.log(req.body.game_name);
+  let game = await Game.findOne({ _id: game_id });
   if(!game){
       return
   }
@@ -18,8 +19,9 @@ router.post('/', async(req,res) => {
   game.set({show: false});
   game = await game.save();
   const games = await Game.find({ show: true});
-  
-  res.render('games',{games: games});
+  console.log(games); 
+  // res.send(games);
+  res.redirect('/');
 })
 
 module.exports = router;

@@ -46,13 +46,15 @@
           <div>
             <!-- To have admin control to delete a game  -->
             <% if(locals.isAdmin){%>
-              <button class = "btn btn-secondary trash" style="bottom: 0px;">
-                <i class="fa fa-trash"></i>
-              </button>
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#myEditModal">
+              <a href="/deleteGame/<%= game._id%>">
+                <button class = "btn btn-secondary trash" style="bottom: 0px;">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </a>
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#myEditModal<%=game._id%>">
                 <i class='fa fa-edit'></i>
               </button>
-              <div class="modal fade" id="myEditModal">
+              <div class="modal fade" id="myEditModal<%=game._id%>">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -100,13 +102,38 @@
             </a>
           </div>
             <div class="custom-column-footer">
-              <button class="btn btn-primary btn-lg availability">
-                CHECK AVAILABILITY
-              </button>
+             
+                <a style =" text-decoration: none;">
+                  <button class="btn btn-primary btn-lg availability" id = "<%=game._id%>">
+                    CHECK AVAILABILITY
+                  </button>
+                </a>
             </div>
           
         </div>
         </div>
     <% } %>
+    <div style=" margin: auto;padding-top: 20px;">
+      <% if (pages > 0) { %>
+        <ul class="pagination text-center">
+            <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+            <% if (i !== 1) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+            <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                <% if (i == current) { %>
+                    <li style = "padding-right: 5px;"class="active text-primary"><a><%= i %></a></li>
+                <% } else { %>
+                    <li>
+                      <button class="btn page-number"><%= i %></button></li>
+                <% } %>
+                <% if (i == Number(current) + 4 && i < pages) { %>
+                    <li class="disabled"><a>...</a></li>
+                <% } %>
+            <% } %>
+        </ul>
+    <% } %>
+    </div>
+    
   </div>
 </div>
