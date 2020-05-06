@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 const mongoose = require('./db/mongoose');
 const logger = require('morgan');
+const moment = require('moment-timezone');
+
 
 const auth = require('./middleware/auth');
 
@@ -18,6 +20,8 @@ const wishlistRouter = require('./routes/wishlist');
 const wishlistItemsRouter = require('./routes/wishlistItems');
 const deleteWishlistRouter = require('./routes/deleteWishlist');
 const editGameRouter = require('./routes/editGame');
+const timeSlotRouter = require('./routes/timeSlot');
+const bookingsRouter = require('./routes/bookings');
 
 const app = express();
 // view engine setup
@@ -42,6 +46,8 @@ app.use('/wishlist', wishlistRouter);
 app.use('/wishlistItems', wishlistItemsRouter);
 app.use('/deleteWishlist', deleteWishlistRouter);
 app.use('/editGame', editGameRouter);
+app.use('/timeSlot',timeSlotRouter);
+app.use('/bookings', bookingsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
