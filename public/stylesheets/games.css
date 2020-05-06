@@ -1,8 +1,8 @@
-.card-deck{
-    padding-top: 100px;
-}
+/* .card-deck{
+    padding-top: 0px;
+} */
 
-.card{
+/* .card{
     position: relative;
     margin-top: 50px;
     width: 500px;
@@ -10,16 +10,41 @@
     border: 1px ;
     padding: 10px;
     box-shadow: 5px 5px 5px 5px #A9A9A9;
-}
-.card:hover{
+} */
+/* .card:hover{
     box-shadow: 10px 10px 10px 10px #696969;
-}
-.card-title{
+} */
+/* .card-title{
     text-align: center;
     text-transform: uppercase;
-}
-.card-img-top{
+} */
+.image{
+    padding-top: 5px;
+    display:block;
+    margin:auto;
     height: 170px;
     width: auto;
     border-radius: 50%;
+}
+
+.custom-column {  
+    position: relative;
+    margin-top: 50px;
+    border: 1px ;
+    padding: 10px;
+    box-shadow: 5px 5px 5px 5px #A9A9A9;
+    box-sizing: border-box;  
+}
+.custom-column:hover{
+    box-shadow: 10px 10px 10px 10px #696969;
+}
+.custom-column-content {
+    text-align: center;
+    border: 2px solid white;  
+    padding: 10px;  
+}
+
+.availability{
+    margin: 0 auto; 
+    display: block;
 }

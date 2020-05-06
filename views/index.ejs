@@ -5,12 +5,15 @@
     <title></title>
     <link rel="stylesheet" href="/stylesheets/layout.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="/javascripts/layout.js"> </script>
     <script src="/javascripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/games.css">
+    <link rel="stylesheet" href="/stylesheets/wishlistItems.css">
+    <link rel="stylesheet" href="/stylesheets/bookings.css">
   </head>
   <body>
   <%- include('partials/nav') %>
@@ -37,7 +40,6 @@
               <div class="container">
                 <div class="carousel-caption">
                   <h1>Pool</h1>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
                 </div>
               </div>
             </div>
@@ -45,36 +47,35 @@
               <div class="container">
                 <div class="carousel-caption text-right">
                   <h1>Squash</h1>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
                 </div>
               </div>
             </div>
           </div><a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
         </div>
 
-        <!-- Wrap the rest of the page in another container to center all the content.-->
+        
         <div class="container marketing">
-          <!-- Three columns of text below the carousel-->
+          
           <div class="row">
             <div class="col-lg-4"><img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140" />
-              <h2>Game 1</h2>
-              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-            </div>
-            <!-- /.col-lg-4-->
-            <div class="col-lg-4"><img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140" />
-              <h2>Game 2</h2>
-              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-            </div>
-            <!-- /.col-lg-4-->
-            <div class="col-lg-4"><img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140" />
-              <h2>Game 3</h2>
-              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+              <h2>Adult Games</h2>
+              <p></p>
+              <!-- <p><a class="btn btn-primary index-filtering Adults" href="#" role="button">Adults »</a></p> -->
             </div>
             
-            <!-- FOOTER-->
+            <div class="col-lg-4"><img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140" />
+              <h2>Board Games</h2>
+              <p></p>
+              <!-- <p><a class="btn btn-primary index-filtering Board-Games" href="#" role="button">Board Games »</a></p> -->
+            </div>
+            
+            <div class="col-lg-4"><img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140" />
+              <h2>Kid Games</h2>
+              <p></p>
+              <!-- <p><a class="btn btn-primary index-filtering Kids" href="#" role="button">Kids »</a></p> -->
+            </div>
+            
+            
             <footer class="container">
               <p class="float-right"><a href="#">Back to top</a></p>
               <p>© Indoor Playground, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>

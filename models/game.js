@@ -1,7 +1,7 @@
 const mongoose  = require('mongoose');
 const validator = require('validator');
 const Joi = require('Joi');
-const gameTypes = ['Adults', 'Kids'];
+const gameTypes = ['Adults', 'Kids', 'Board Games'];
 const GameSchema  = new mongoose.Schema({
     name:{
         type: String,
@@ -25,21 +25,25 @@ const GameSchema  = new mongoose.Schema({
     description:{
         type:String,
         trim:true,
-        minlength: 8,
     },
+    show:{
+        type: Boolean,
+        default: true
+    }
 });
 
 const Game = mongoose.model('Games', GameSchema);
 
 
-// function validateGame(game){
-//     const schema = {
-//         name: Joi.string().min(3).max(25).required(),
-//         type: Joi.string().min(8).max(255).required(),
-//         description: Joi.string().min(8),
-//     }
-//     return Joi.validate(game, schema);
-// }
+function validateGame(game){
+    const schema = {
+        name: Joi.string().min(3).max(25).required(),
+        type: Joi.string().max(255).required(),
+        description: Joi.string(),
+    }
+    return Joi.validate(game, schema);
+}
 
 
 exports.Game = Game;
+exports.validateGame = validateGame;

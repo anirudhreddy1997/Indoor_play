@@ -2,9 +2,7 @@ const mongoose  = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const Joi = require('Joi');
-// require("@hapi/joi") ;
-// const PasswordComplexity = require('joi-password-complexity');
-console.log("Hello user");
+
 const UserSchema  = new mongoose.Schema({
     name:{
         type: String,
