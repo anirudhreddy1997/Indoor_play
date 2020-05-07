@@ -8,6 +8,20 @@ const moment = require('moment-timezone');
 const auth = require('../middleware/auth');
 
 router.get('/:id', async(req, res) => {
+    if(req.error){
+        res.locals.error = req.error;
+        res.redirect("/games");
+        return ;
+    }
+    if(req.user){
+    // console.log(req.user);
+        res.locals.user = req.user;
+    }else if(!req.logged){
+        res.locals.msg = "login to book time slot";
+        res.redirect("/games");
+        return ;
+
+    }
     console.log(req.params);
     const id = req.params.id;
     const booked = await TimeSlot.find({game: id, date: moment(new Date()).format("YYYYMMDD")},{_id: 0, slot: 1});
@@ -20,6 +34,20 @@ router.get('/:id', async(req, res) => {
 });
 
 router.post('/:id/book', auth, async(req, res) => {
+    if(req.error){
+        res.locals.error = req.error;
+        res.redirect("/games");
+        return ;
+    }
+    if(req.user){
+    // console.log(req.user);
+        res.locals.user = req.user;
+    }else if(!req.logged){
+        res.locals.msg = "login to book time slot";
+        res.redirect("/games");
+        return ;
+
+    }
     const game_id = req.params.id;
     const slot = req.body.exampleRadios;
     console.log(slot);
@@ -27,6 +55,7 @@ router.post('/:id/book', auth, async(req, res) => {
     const booked = await TimeSlot.find({game: game_id, date: moment(new Date()).format("YYYYMMDD"), slot: slot});
     if(booked.length !== 0){
        console.log("Hello");
+       res.send("Slot already booked");
     }
     else{
         let timeSlot = new TimeSlot({

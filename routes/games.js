@@ -9,7 +9,7 @@ router.post('/', async(req, res) => {
     let count;
     
     // String given in the search field
-    var search_for_game = req.body.search_for || " ";
+    var search_for_game = req.body.search_for || "";
 
     // game selected in the filter
     const filter = req.body.filter;
@@ -20,22 +20,23 @@ router.post('/', async(req, res) => {
     let games;
     if(filter == "All"){
         count = await Game.count();
-        games = await Game.find({name: new RegExp(req.body.search_for, 'i'),  show: true})
+        games = await Game.find({name: new RegExp(search_for_game, 'i'),  show: true})
                            .skip((perPage * page) - perPage).limit(perPage);
     }
     else{
-        games = await Game.find({ type: req.body.filter, name: new RegExp(req.body.search_for, 'i'),  show: true});
+        games = await Game.find({ type: req.body.filter, name: new RegExp(search_for_game, 'i'),  show: true});
         count = games.length;
-        games = await Game.find({ type: req.body.filter, name: new RegExp(req.body.search_for, 'i'),  show: true})
+        games = await Game.find({ type: req.body.filter, name: new RegExp(search_for_game, 'i'),  show: true})
                             .skip((perPage * page) - perPage).limit(perPage);
     }
     // If the user is not logged-in
     if(!req.logged){
         // Not an admin
+        console.log('herer')
         res.locals.isAdmin = false;
-    }
-    // User is logged-in
+    }    
     else{
+        // User is logged-in
         // Check if user isAdmin
         if(req.user.isAdmin){
             // Send to view that isAdmin is true
@@ -45,10 +46,11 @@ router.post('/', async(req, res) => {
             // User not an admin
             res.locals.isAdmin = false;
         }
-
+        
     }
-    console.log('Hello');
-    res.render('games',{games: games, current: page, pages: Math.ceil(count / perPage)});
+    console.log('herer')
+    await res.render('games',{games: games, current: page, pages: Math.ceil(count / perPage)});
+    return null;
     
 })
 

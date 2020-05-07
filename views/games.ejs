@@ -113,6 +113,11 @@
         </div>
         </div>
     <% } %>
+    
+    
+  </div>
+
+  <div class="row">
     <div style=" margin: auto;padding-top: 20px;">
       <% if (pages > 0) { %>
         <ul class="pagination text-center">
@@ -122,7 +127,7 @@
             <% } %>
             <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
                 <% if (i == current) { %>
-                    <li style = "padding-right: 5px;"class="active text-primary"><a><%= i %></a></li>
+                    <li style = "background-color: #007bff; padding: 6px 12px"class="active text-primary"><a style="color: white;"><%= i %></a></li>
                 <% } else { %>
                     <li>
                       <button class="btn page-number"><%= i %></button></li>
@@ -134,6 +139,5 @@
         </ul>
     <% } %>
     </div>
-    
-  </div>
+</div>
 </div>

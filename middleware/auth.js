@@ -1,12 +1,15 @@
 const jwt = require('jsonwebtoken');
 function auth(req, res, next){
     const token = req.cookies['indplay-jwt-token'];
+    const url = req.originalUrl;
+    
 
     // Store the logged information in logged
     if(!token){
         //No user logged in- redirect to homepage
         req.logged = false;
-        next();
+        console.log("user not logged");
+        return next();
     }
 
     try{
@@ -20,8 +23,9 @@ function auth(req, res, next){
     next();
     }
     catch(e){
+        console.log("error in jwt");
         req.error = "User not valid. Login again." ;
-        next();
+        return next();
     }
     
 }
