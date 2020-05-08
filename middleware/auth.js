@@ -8,17 +8,18 @@ function auth(req, res, next){
     if(!token){
         //No user logged in- redirect to homepage
         req.logged = false;
-        console.log("user not logged");
         return next();
     }
 
     try{
     // return payload
+    console.log("user logged");
     const payload = jwt.verify(token, 'jwtSecretToken');
 
     //store the user id in the request with a user property
     req.user = payload;
     req.logged = true;
+    console.log(req.user.name);
     // pass the request to the route handler
     next();
     }

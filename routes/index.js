@@ -16,6 +16,19 @@ router.get('/', auth,function(req, res, next) {
   
 });
 
+router.post('/', auth,function(req, res, next) {
+  if(req.error){
+    res.locals.error = req.error;
+  }
+  if(req.user){
+    // console.log(req.user);
+    res.locals.user = req.user;
+  }
+  res.locals.title = 'Indoor Playground';
+  res.render('index');
+  
+});
+
 module.exports = router;
 
 
