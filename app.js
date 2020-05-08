@@ -46,7 +46,7 @@ app.use('/wishlist', wishlistRouter);
 app.use('/wishlistItems', wishlistItemsRouter);
 app.use('/deleteWishlist', deleteWishlistRouter);
 app.use('/editGame', editGameRouter);
-app.use('/timeSlot',timeSlotRouter);
+app.use('/timeSlot',auth, timeSlotRouter);
 app.use('/bookings', bookingsRouter);
 
 // catch 404 and forward to error handler

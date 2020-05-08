@@ -1,26 +1,78 @@
 $(document).ready(function(){
 
-// $('.index-filtering').on('click', function(e){
-
-//     let filter = $(this).attr('class');
-//     const filter_split = filter.split(' ');
-//     filter = filter_split[filter_split.length - 1];
-//     const page = 1;
-//     var data = {};
-//     data.filter = filter;				  
-//     data.page = page;
-//     $.ajax({
-//         url: 'games/', 
-//         type: 'POST',
-//         data: JSON.stringify(data),
-//         cache: false,
-//         contentType: 'application/json',
+$('#LoginButton').on('click', function(){
+    const email = $("#Login-Email").val();
+    const password = $("#Login-Password").val();
+    var data = {};
+    data.email = email;	
+    data.password = password;			  
+    $.ajax({
+        url: 'auth', 
+        type: 'POST',
+        data: JSON.stringify(data),
+        cache: false,
+        contentType: 'application/json',
                                 
-//         success: function(html) {
-//             $('#gameContainer').html(html) ;
-//         }
-//     });
-// });
+        success: function(data) {
+            if (data === 'Invalid username or password'){
+                // console.log(data);
+                alert(data);
+            }
+            else{
+                // console.log(data);
+                location.reload();
+            }
+        },
+    });
+})
+
+$('#RegisterButton').on('click', function(){
+    const name = $("#Register-name").val();
+    const email = $("#Register-email").val();
+    const password = $("#Register-password").val();
+    var data = {};
+    data.name = name;
+    data.email = email;	
+    data.password = password;			  
+    $.ajax({
+        url: 'usersRegistration', 
+        type: 'POST',
+        data: JSON.stringify(data),
+        cache: false,
+        contentType: 'application/json',
+                                
+        success: function(data) {
+            if (data === 'Already registered user'){
+                alert(data);
+            }
+            else{
+                location.reload();
+            }
+        },
+    });
+})
+
+$('.index-filtering').on('click', function(e){
+
+    let filter = $(this).text();
+    console.log(filter);
+    const page = 1;
+    var data = {};
+    data.filter = filter;	
+    data.search_for = '';			  
+    data.page = page;
+    $.ajax({
+        url: 'games/', 
+        type: 'POST',
+        data: JSON.stringify(data),
+        cache: false,
+        contentType: 'application/json',
+                                
+        success: function(html) {
+            $('#gameContainer').html(html) ;
+        }
+    });
+});
 
 $('#filter-search').on('click', function(e){
 
@@ -79,27 +131,6 @@ $('#wishlist-button').on('click', function(e){
 
 })
 
-// $(document).on("click", ".trash", function(e){
-//     // var id = $(this).attr('id').split('-')[0];
-//     // console.log(id);
-//     var game_name = $(this).parent().nextAll('.custom-column-content:first').find('.game-name').text();
-//     var data = {}
-//     data.game_name = game_name;
-//     console.log("Hello");
-//     $.ajax({
-//                 url: 'deleteGame/', 
-//                 type: 'POST',
-//                 data: JSON.stringify(data),
-//                 cache: false,
-//                 contentType: 'application/json',
-                                        
-//                 success: function(html) {
-//                     // console.log('Delete clicked');
-//                     // console.log(html);
-//                     $('#gameContainer').html(html) ;
-//                 }
-//             });
-// })
 
 $(document).on("click", ".wishlist-trash", function(e){
     

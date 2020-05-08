@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"><a class="navbar-brand" href="#">Logo</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -55,20 +55,20 @@
         </div>
         <!-- Modal body-->
         <div class="modal-body">
-          <form class="form-container" method="POST" action="/usersRegistration">
+          <form class="form-container" method="POST">
             <div class="form-group">
               <label for="exampleInputName">Name</label>
-              <input class="form-control"  name="name" type="text" placeholder="Enter name" required pattern="[A-Za-z]{3,}">
+              <input class="form-control"  id = "Register-name" name="name" type="text" placeholder="Enter name" required pattern="[A-Za-z]{3,}">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail">Email address</label>
-              <input class="form-control"  name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+              <input class="form-control"  id = "Register-email" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email" required>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword">Password</label>
-              <input class="form-control"  name="password" type="password" placeholder="Password" required pattern="([A-Za-z]|[0-9]){8,}[@!]+">
+              <input class="form-control"  id = "Register-password" name="password" type="password" placeholder="Password" required pattern="([A-Za-z]|[0-9]|[_@]){8,}">
             </div>
-            <button class="btn btn-primary RegisterButton" type="submit">Register</button>
+            <input class="btn btn-primary RegisterButton" value = "Register" id = "RegisterButton" type="button">
           </form>
         </div>
       </div>
@@ -83,16 +83,16 @@
         </div>
         <!-- Modal body-->
         <div class="modal-body">
-          <form class="form-container" method="POST" action="/auth">
+          <form class="form-container" method="POST">
             <div class="form-group">
               <label for="exampleInputEmail">Email address</label>
-              <input class="form-control"  name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+              <input class="form-control"  id = "Login-Email" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword">Password</label>
-              <input class="form-control"  name="password" type="password" placeholder="Password">
+              <input class="form-control"  id = "Login-Password" name="password" type="password" placeholder="Password" required pattern="([A-Za-z]|[0-9]|[_@]){8,}">
             </div>
-            <button class="btn btn-primary RegisterButton" type="submit">Login</button>
+            <input class="btn btn-primary RegisterButton" value = 'Login' id = "LoginButton" type="button">
           </form>
         </div>
       </div>

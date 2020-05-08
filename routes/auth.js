@@ -9,21 +9,23 @@ const jwt = require('jsonwebtoken');
 router.post('/', async(req,res) => {
     const {error} = validateAuth(req.body);
     if(error){
-        return res.status(400).send(error.details[0].message)
+        res.send(error.details[0].message);
+        return;
     }
     let user = await User.findOne({ email: req.body.email });
     if(!user){
-        return res.status(400).send('Invalid user or password');
+        res.send('Invalid username or password');
+        return;
     }
     // return bool 
-    const validPassword = bcrypt.compare(req.body.password, user.password)
+    const validPassword = bcrypt.compare(req.body.password, user.password);
     if(!validPassword){
-        return res.status(400).send('Invalid username or password')
+        res.send('Invalid username or password');
+        return;
     }
-
+    console.log("user");
     // Send the JSW token
     const token = user.generateAuthToken();
-    console.log(req);
     res.cookie('indplay-jwt-token', token, {httpOnly: true, maxAge: 1000000}).redirect('/');
 })
 function validateAuth(user){

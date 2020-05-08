@@ -14,6 +14,7 @@ router.get('/:id', async(req, res) => {
         return ;
     }
     if(req.user){
+        
     // console.log(req.user);
         res.locals.user = req.user;
     }else if(!req.logged){
@@ -29,8 +30,8 @@ router.get('/:id', async(req, res) => {
     for( x of booked ){
         booked_array.push(x.slot);
     }
-    // res.send(booked_array);
-    res.render('timeSlot',{id: id, booked: booked_array});
+    const game = await Game.findOne({_id: id})
+    res.render('timeSlot',{id: id, booked: booked_array, game: game});
 });
 
 router.post('/:id/book', auth, async(req, res) => {
@@ -54,7 +55,6 @@ router.post('/:id/book', auth, async(req, res) => {
     const date = moment(new Date()).format("YYYYMMDD");
     const booked = await TimeSlot.find({game: game_id, date: moment(new Date()).format("YYYYMMDD"), slot: slot});
     if(booked.length !== 0){
-       console.log("Hello");
        res.send("Slot already booked");
     }
     else{
@@ -93,9 +93,15 @@ router.post('/:id/book', auth, async(req, res) => {
             booking = await booking.save();
     
         }
-        
-        
-        res.send("Hello");
+        if(req.error){
+            res.locals.error = req.error;
+        }
+        if(req.user){
+            // console.log(req.user);
+            res.locals.user = req.user;
+         }
+
+        res.render('success');
 
     }
     

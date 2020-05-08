@@ -12,13 +12,11 @@ router.post('/', async(req, res) => {
     var search_for_game = req.body.search_for || "";
 
     // game selected in the filter
-    const filter = req.body.filter;
-    console.log(filter);
-    console.log(search_for_game);
+    const filter = req.body.filter || "";
 
     // Find the games according to the filter and search
     let games;
-    if(filter == "All"){
+    if(filter == "All" || filter == "Filter"){
         count = await Game.count();
         games = await Game.find({name: new RegExp(search_for_game, 'i'),  show: true})
                            .skip((perPage * page) - perPage).limit(perPage);
@@ -32,7 +30,7 @@ router.post('/', async(req, res) => {
     // If the user is not logged-in
     if(!req.logged){
         // Not an admin
-        console.log('herer')
+
         res.locals.isAdmin = false;
     }    
     else{
@@ -48,7 +46,6 @@ router.post('/', async(req, res) => {
         }
         
     }
-    console.log('herer')
     await res.render('games',{games: games, current: page, pages: Math.ceil(count / perPage)});
     return null;
     
